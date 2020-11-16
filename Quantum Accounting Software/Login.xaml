@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="Quantum_Accounting_Software.Login"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Quantum_Accounting_Software"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models="using:Quantum_Accounting_Software.models"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <ScrollViewer>
+
+        <Grid RowSpacing="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Login"  FontSize="28" Opacity=".57" Grid.Row="0"/>
+            <PersonPicture Width="88" Height="88" HorizontalAlignment="Center"  Grid.Row="1"/>
+
+            <StackPanel Orientation="Vertical" Grid.Row="3" Spacing="16" VerticalAlignment="Center">
+
+                <AutoSuggestBox x:Name="tb_username" TextMemberPath="Username" ItemsSource="{x:Bind listusers}" PlaceholderText="Username" HorizontalAlignment="Center" Grid.Row="3" MinWidth="200">
+                    <AutoSuggestBox.ItemTemplate >
+                        <DataTemplate x:DataType="models:Users">
+                            <TextBlock Text="{x:Bind Username}"/>
+                        </DataTemplate>
+                    </AutoSuggestBox.ItemTemplate>
+                </AutoSuggestBox>
+                <PasswordBox Name="password" Style="{StaticResource PasswordBoxStyle1}" PlaceholderText="Password" HorizontalAlignment="Center" Grid.Row="4" MinWidth="200"/>
+
+                <Button Style="{StaticResource ButtonStyle1}" Content="CONTINUE" MinWidth="200" HorizontalAlignment="Center" Margin="0,32,0,0" Click="Button_Click"/>
+            </StackPanel>
+
+
+            <HyperlinkButton Content="Forgotten password?" Grid.Row="4" HorizontalAlignment="Center"/>
+
+            <TextBlock Text="powered by Awwads Cash in Software" HorizontalAlignment="Center" Grid.Row="5" Margin="0,0,0,32" Opacity=".52"/>
+        </Grid>
+    </ScrollViewer>
+</Page>
